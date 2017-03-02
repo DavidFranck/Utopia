@@ -219,8 +219,13 @@ public class TestGuava {
     }
     @Test
     public void testRange (){
-
+//        List scores = Lists.newArrayList();
+//        Iterable belowMedian =Iterables.filter(scores,Range.lessThan(1));
+        Range validGrades = Range.closed(1, 12);
+        for(Object grade : ContiguousSet.create(validGrades, DiscreteDomain.integers())) {
+            System.out.print(grade+"\t");
+        }
+        System.out.println("\n------------------------------------------");
+        System.out.println(Range.closed(1,6).contains(2));
     }
-
-
 }
