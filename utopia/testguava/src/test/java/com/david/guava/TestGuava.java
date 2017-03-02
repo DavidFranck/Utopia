@@ -228,4 +228,10 @@ public class TestGuava {
         System.out.println("\n------------------------------------------");
         System.out.println(Range.closed(1,6).contains(2));
     }
+    @Test
+    public void testHash(){
+        HashFunction md5 = Hashing.md5();
+        HashCode hash = md5.newHasher().hash();
+        System.out.println(hash);
+    }
 }
