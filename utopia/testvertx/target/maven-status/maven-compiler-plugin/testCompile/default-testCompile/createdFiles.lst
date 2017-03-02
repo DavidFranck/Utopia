@@ -1,0 +1,8 @@
+com\david\web\VertxServer.class
+com\david\local\BaseVerticle.class
+com\david\local\EventBusReceiverVerticle.class
+com\david\web\HelloWorldServer.class
+com\david\local\MyVerticle.class
+com\david\local\TestStation.class
+com\david\local\TestBuffer.class
+com\david\local\EventBusSenderVerticle.class

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="firstverrxapp" />
+        <module name="firstvertxapp" />
+        <module name="Test" />
+        <module name="testguava" />
+        <module name="testkafka" />
+        <module name="TestKafka" />
+        <module name="TestProducer" />
+        <module name="teststation" />
+        <module name="testvertx" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="firstverrxapp" target="1.5" />
+      <module name="firstvertxapp" target="1.8" />
+      <module name="Test" target="1.5" />
+      <module name="testguava" target="1.5" />
+      <module name="TestKafka" target="1.5" />
+      <module name="testkafka" target="1.5" />
+      <module name="TestProducer" target="1.5" />
+      <module name="teststation" target="1.5" />
+      <module name="testvertx" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

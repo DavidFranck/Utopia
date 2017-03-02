@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/firstvertxapp/firstvertxapp.iml" filepath="$PROJECT_DIR$/firstvertxapp/firstvertxapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testguava/testguava.iml" filepath="$PROJECT_DIR$/testguava/testguava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testkafka/testkafka.iml" filepath="$PROJECT_DIR$/testkafka/testkafka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/teststation/teststation.iml" filepath="$PROJECT_DIR$/teststation/teststation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testvertx/testvertx.iml" filepath="$PROJECT_DIR$/testvertx/testvertx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/utopia.iml" filepath="$PROJECT_DIR$/.idea/utopia.iml" />
+    </modules>
+  </component>
+</project>
