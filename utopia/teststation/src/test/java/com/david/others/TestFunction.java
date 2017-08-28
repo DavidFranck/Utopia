@@ -1,3 +1,5 @@
+package com.david.others;
+
 import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 

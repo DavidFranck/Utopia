@@ -1,3 +1,5 @@
+package com.david.others;
+
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;

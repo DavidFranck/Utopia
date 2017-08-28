@@ -1,3 +1,5 @@
+package com.david.others;
+
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
