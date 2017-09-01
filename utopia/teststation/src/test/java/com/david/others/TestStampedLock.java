@@ -2,9 +2,22 @@ package com.david.others;
 
 import java.util.concurrent.locks.StampedLock;
 
+/**
+ * 相比ReentrantLock读写锁，StampedLock通过提供乐观读锁在多线程多写线程少的情况下提供更好的性能，因为乐观读锁不需要进行CAS设置锁的状态而只是简单的测试状态
+ */
 public class TestStampedLock {
-    static class Point {
+    public static void main(String[] args) {
+        Point point = new Point();
 
+        System.out.println(point.distanceFromOrigin());
+        point.moveIfAtOrigin(1.0,1.0);
+        System.out.println(point.distanceFromOrigin());
+        point.move(2.0,2.0);
+        System.out.println(point.distanceFromOrigin());
+    }
+
+
+    static class Point {
         private double x, y;
         private final StampedLock sl = new StampedLock();
 
