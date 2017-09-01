@@ -29,9 +29,15 @@ import java.util.function.Function;
  * on 2017/2/10
  */
 public class TestGuava {
+    @Test
+    public void testFutrue(){
+        
+    }
+
+
 
     @Test
-    public void cache1() throws ExecutionException, IOException, InterruptedException {
+    public void testCache() throws ExecutionException, IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(10);
         LoadingCache<String, Object> cache = CacheBuilder.newBuilder().maximumSize(1000).refreshAfterWrite(5, TimeUnit.MINUTES).build(new CacheLoader<String, Object>() {
             @Override
@@ -74,7 +80,7 @@ public class TestGuava {
     }
 
     @Test
-    public void testGen() {
+    public void testTypeToken() {
         class Gen<T> {
             protected T t;
 
@@ -118,7 +124,7 @@ public class TestGuava {
     }
 
     @Test
-    public void testTypeToken(){
+    public void testTypeToken1(){
         TypeToken<String> of = TypeToken.of(String.class);
         System.out.println(of.getType());
         System.out.println(String.class);

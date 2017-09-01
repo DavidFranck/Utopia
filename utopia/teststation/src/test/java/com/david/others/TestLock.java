@@ -91,15 +91,21 @@ public class TestLock {
 
         public void get() {
             lock.lock();
-            System.out.println(Thread.currentThread().getId());
-            set();
-            lock.unlock();
+            try {
+                System.out.println(Thread.currentThread().getId());
+                set();
+            } finally {
+                lock.unlock();
+            }
         }
 
         public void set() {
             lock.lock();
-            System.out.println(Thread.currentThread().getId());
-            lock.unlock();
+            try {
+                System.out.println(Thread.currentThread().getId());
+            } finally {
+                lock.unlock();
+            }
         }
 
         @Override
