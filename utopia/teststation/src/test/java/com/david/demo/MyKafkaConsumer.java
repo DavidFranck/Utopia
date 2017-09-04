@@ -19,7 +19,7 @@ public class MyKafkaConsumer {
         int i = 0;
        /*创建Consummer必要的链接参数*/
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.134.128:9093,192.168.134.128:9094,192.168.134.128:9095");
+        props.put("bootstrap.servers", "localhost:9092");
           /*Kafka的消息消费是通过group管理，必填*/
         props.put("group.id", "group_1");
         props.put("key.deserializer", StringDeserializer.class);
@@ -28,7 +28,7 @@ public class MyKafkaConsumer {
         KafkaConsumer<String, Long> kafkaConsumer =
                 new KafkaConsumer<String, Long>(props);
         /*Kafka的消息消费者订阅消息TestTopic*/
-        kafkaConsumer.subscribe(Arrays.asList("TestTopic"));
+        kafkaConsumer.subscribe(Arrays.asList("test_topic"));
         while (true) {
             System.out.println(i++);
              /*消费Testopic中的消息*/

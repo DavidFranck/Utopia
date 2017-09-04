@@ -28,7 +28,7 @@ public class MyKafkaProducer extends Thread {
             /**
              * 构造消息体
              */
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>("TestTopic", "10010", "wanghh true 24");
+            ProducerRecord<String, String> record = new ProducerRecord<String, String>("tes_topic", "10010", "wanghh true 24");
             producer.send(record);
             try {
                 sleep(1000);
@@ -46,7 +46,7 @@ public class MyKafkaProducer extends Thread {
          * 创建Produer连接参数
          */
         Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers", "192.168.134.128:9092");
+        properties.setProperty("bootstrap.servers", "localhost:9092");
         properties.setProperty("key.serializer", StringSerializer.class.getName());
         properties.setProperty("value.serializer", StringSerializer.class.getName());
         /**
@@ -56,7 +56,7 @@ public class MyKafkaProducer extends Thread {
     }
 
     public static void main(String[] args) {
-        new MyKafkaProducer("TestTopic").start();
+        new MyKafkaProducer("test_topic").start();
     }
 
 }
