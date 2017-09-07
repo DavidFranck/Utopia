@@ -1,5 +1,7 @@
 package com.david.others;
 
+import org.junit.Test;
+
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.ReentrantLock;
@@ -118,6 +120,15 @@ public class TestLock {
             new Thread(testReentrantLock).start();
             new Thread(testReentrantLock).start();
             new Thread(testReentrantLock).start();
+        }
+        @Test
+        public void testLock(){
+            ReentrantLock lock = new ReentrantLock();
+            lock.lock();
+            lock.lock();
+            System.out.println(1);
+            lock.unlock();
+            lock.unlock();
         }
     }
 }
