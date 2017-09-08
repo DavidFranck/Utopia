@@ -1,4 +1,4 @@
-package com.david.others;
+package com.david.lock;
 
 import org.junit.Test;
 
