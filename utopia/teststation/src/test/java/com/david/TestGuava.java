@@ -9,9 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.math.BigIntegerMath;
 import com.google.common.reflect.AbstractInvocationHandler;
 import com.google.common.reflect.TypeToken;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListenableFutureTask;
+import com.google.common.util.concurrent.*;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -21,6 +19,7 @@ import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
 import java.util.function.Function;
 
@@ -30,8 +29,36 @@ import java.util.function.Function;
  */
 public class TestGuava {
     @Test
-    public void testFutrue(){
-        
+    public void testFuture() throws ExecutionException, InterruptedException {
+        ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+        ListenableFuture<Integer> future1 = service.submit(() -> {
+            Thread.sleep(1000);
+            System.out.println(1);
+            return 1;
+        });
+        ListenableFuture<Integer> future2 = service.submit(() -> {
+            Thread.sleep(1000);
+            System.out.println(2);
+            return 2;
+        });
+        ListenableFuture<List<Integer>> all = Futures.allAsList(future1, future2);
+        ListenableFuture<String> transform = Futures.transform(all, (AsyncFunction<List<Integer>, String>) results -> Futures.immediateFuture(String.format("success futuare:%d", results.size())));
+
+
+//        ListenableFuture transform = Futures.transform(all, (AsyncFunction) result -> Futures.immediateFuture(String.format("success future", result)));
+        Futures.addCallback(transform, new FutureCallback<Object>() {
+            @Override
+            public void onSuccess(Object result) {
+                System.out.println(result.getClass());
+                System.out.printf("success with: %s%n", result);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                System.out.printf("onFailure%s%n", t.getMessage());
+            }
+        });
+        System.out.println(transform.get());
     }
 
     @Test
@@ -91,7 +118,7 @@ public class TestGuava {
                 this.t = t;
             }
         }
-        class Gen1 extends Gen<String>{
+        class Gen1 extends Gen<String> {
 //            @Override
 //            public String getT() {
 //                System.out.println(this.getClass().getName());
@@ -105,24 +132,27 @@ public class TestGuava {
 //        Gen<String> stringGen = new Gen<>();
 //        System.out.println(stringGen.getClass().getGenericSuperclass());
 
-        TypeToken<Gen1> gen1 = new TypeToken<Gen1>() {};
+        TypeToken<Gen1> gen1 = new TypeToken<Gen1>() {
+        };
         TypeToken<?> resolveType = gen1.resolveType(Gen.class.getTypeParameters()[0]);
         System.out.println(resolveType.getType().getTypeName());
 
 //        TypeToken<ArrayList<String>> typeToken = new TypeToken<ArrayList<String>>() {};
-        TypeToken<ArrayList<String>> typeToken = new TypeToken<ArrayList<String>>() {};
+        TypeToken<ArrayList<String>> typeToken = new TypeToken<ArrayList<String>>() {
+        };
         TypeToken<?> genericTypeToken = typeToken.resolveType(ArrayList.class.getTypeParameters()[0]);
         System.out.println(genericTypeToken.getType().getTypeName());
 
 
 //        TypeToken<Function<String, Object>> functionTypeToken = new TypeToken<Function<String, Object>>(){};
-        TypeToken<Function<? extends String, ? extends Object>> functionTypeToken = new TypeToken<Function<?extends String, ?extends Object>>(){};
+        TypeToken<Function<? extends String, ? extends Object>> functionTypeToken = new TypeToken<Function<? extends String, ? extends Object>>() {
+        };
         System.out.println(functionTypeToken.resolveType(Function.class.getTypeParameters()[0]).getType().getTypeName());
         System.out.println(functionTypeToken.resolveType(Function.class.getTypeParameters()[1]).getType().getTypeName());
     }
 
     @Test
-    public void testTypeToken1(){
+    public void testTypeToken1() {
         TypeToken<String> of = TypeToken.of(String.class);
         System.out.println(of.getType());
         System.out.println(String.class);
