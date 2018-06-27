@@ -8,7 +8,7 @@
     <artifactId>test-station</artifactId>
     <version>1.0</version>
     <properties>
-        <guava.version>17.0</guava.version>
+        <guava.version>18.0</guava.version>
     </properties>
 
     <dependencies>
