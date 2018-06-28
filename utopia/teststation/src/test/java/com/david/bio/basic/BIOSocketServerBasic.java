@@ -13,15 +13,15 @@ import java.net.Socket;
 public class BIOSocketServerBasic {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
-		// 1.´´½¨ServerSocket
+		// 1.åˆ›å»ºServerSocket
 		ServerSocket serverSocket = new ServerSocket();
-		// 2.ÉèÖÃ¶Ë¿Ú
+		// 2.è®¾ç½®ç«¯å£
 		serverSocket.bind(new InetSocketAddress(6666));
 		while (true) {
-			// 3.»ñÈ¡ÇëÇó±¨ÎÄ accept
+			// 3.è·å–è¯·æ±‚æŠ¥æ–‡ accept
 			Socket socket = serverSocket.accept();
-			// ÒÔÏÂÎªÌ×Â·
-			// a.¶ÁÈ¡ÓÃ»§ÇëÇó Ïàµ±ÓÚwebÖĞµÄ request
+			// ä»¥ä¸‹ä¸ºå¥—è·¯
+			// a.è¯»å–ç”¨æˆ·è¯·æ±‚ ç›¸å½“äºwebä¸­çš„ request
 			InputStream is = socket.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
@@ -30,18 +30,18 @@ public class BIOSocketServerBasic {
 			while ((len = br.readLine()) != null) {
 				sb.append(len);
 			}
-			System.out.println("½ÓÊÜµ½¿Í»§¶ËµÄÊı¾İÎª" + sb.toString());
-			// b.Ïò¿Í»§¶ËÏìÓ¦ Ïàµ±ÓÚwebÖĞµÄµÄresponse
+			System.out.println("æ¥å—åˆ°å®¢æˆ·ç«¯çš„æ•°æ®ä¸º" + sb.toString());
+			// b.å‘å®¢æˆ·ç«¯å“åº” ç›¸å½“äºwebä¸­çš„çš„response
 			OutputStream os = socket.getOutputStream();
 			PrintWriter pw = new PrintWriter(os);
-			pw.println("ÄãÈ·¶¨Ò»¶¨ÒÔ¼°¿Ï¶¨ÄãÊäÈëµÄÊÇ" + sb.toString() + "Ã´£¿");
-			/***************************¼ÇµÃflush******************************/
+			pw.println("ä½ ç¡®å®šä¸€å®šä»¥åŠè‚¯å®šä½ è¾“å…¥çš„æ˜¯" + sb.toString() + "ä¹ˆï¼Ÿ");
+			/***************************è®°å¾—flush******************************/
 			pw.flush();
-			//¹ØÁ÷
+			//å…³æµ
 			br.close();
 			pw.close();
 			socket.close();
 		}
-//			serverSocket.close(); ²»¹Ø
+//			serverSocket.close(); ä¸å…³
 	}
 }

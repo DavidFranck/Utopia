@@ -18,8 +18,3 @@ test-results
 test-tmp
 *.iml
 *.class
-utopia/firstvertxapp/src/main/resources/
-utopia/testguava/src/main/
-utopia/testkafka/src/main/java/
-utopia/teststation/src/main/java/
-utopia/testvertx/src/main/

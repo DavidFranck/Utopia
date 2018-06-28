@@ -8,28 +8,28 @@ import java.net.Socket;
 
 public class BIOSocketClientBasic {
 	public static void main(String[] args) throws Exception {
-		//´´½¨Ò»¸ösocket
+		//åˆ›å»ºä¸€ä¸ªsocket
 		Socket socket = new Socket();
-		//ÉèÖÃÁ¬½Ó
+		//è®¾ç½®è¿æ¥
 		socket.connect(new InetSocketAddress("192.168.0.75", 6666));
-		
-		// ÒÔÏÂÎªÌ×Â·
-		//1.Ïòserver·¢ÆğÇëÇó
+
+		// ä»¥ä¸‹ä¸ºå¥—è·¯
+		//1.å‘serverå‘èµ·è¯·æ±‚
 		PrintWriter pw = new PrintWriter(socket.getOutputStream());
-		pw.print("ÎÒÊÇClient2  Wanghh");
-		/***************************¼ÇµÃflush  shutdown***************************************/
-		//Çå¿Õ»º³åÇø
+		pw.print("æˆ‘æ˜¯Client2  Wanghh");
+		/***************************è®°å¾—flush  shutdown***************************************/
+		//æ¸…ç©ºç¼“å†²åŒº
 		pw.flush();
-		//±íÊ¾Á÷½áÊøÁË
+		//è¡¨ç¤ºæµç»“æŸäº†
 		socket.shutdownOutput();
-		//2.»ñµÃÏìÓ¦
-		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));	
+		//2.è·å¾—å“åº”
+		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		StringBuilder sb = new StringBuilder();
 		String len = null;
 		while((len = br.readLine()) != null){
 			sb.append(len);
 		}
-		System.out.println("Client 1 µÄÏìÓ¦Îª"+sb.toString());
+		System.out.println("Client 1 çš„å“åº”ä¸º"+sb.toString());
 		br.close();
 		pw.close();
 		socket.close();

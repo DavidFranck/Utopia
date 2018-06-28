@@ -1,0 +1,108 @@
+// Protocol version: v.21
+syntax = "proto2";
+
+import "iadx-rtb.proto";
+
+option java_outer_classname = "MexExt";
+
+package com.mex.rtb;
+
+// Copyright 2017 Mex Inc. All Rights Reserved.
+
+// Protocol buffer for Ad Exchange OpenRTB specification.
+
+// 广告类型，解释后用于后面广告的判断
+// 0:banner，1:插屏，2:开屏，3:原生，4:视频；
+enum AdType {
+    banner_ad = 1;
+
+    interstital_ad = 2;
+
+    splash_ad = 3;
+
+    native_ad = 4;
+
+    video_ad = 5;
+}
+
+
+extend com.mex.iadx.openrtb.BidRequest.Imp {
+    optional AdType ad_type = 1000;
+    // 支持的广告点击行为
+    repeated Adct support_adct = 1001;
+}
+
+extend com.mex.iadx.openrtb.BidRequest.Device {
+
+    // imei 码明文
+    optional string imei = 1001;
+    // mac 地址明文
+    optional string mac = 1002;
+    // Android Id 明文
+    optional string android_id = 1003;
+    // iOS  IDFA
+    optional string idfa = 1004;
+    // window phone  用户终端的 DUID， md5
+    optional string duid = 1005;
+}
+
+extend com.mex.iadx.openrtb.BidResponse {
+
+    // [AdX: BidResponse.processing_time_ms]
+    optional int32 processing_time_ms = 1001;
+
+}
+
+
+extend com.mex.iadx.openrtb.BidResponse.SeatBid.Bid {
+    optional AdType bad_type = 9001;
+
+    // 曝光追踪地址, 允许使用宏
+    repeated string impression_tracking_url = 1001;
+
+    // 点击追踪地址, 允许使用宏
+    repeated string click_tracking_url = 1002;
+
+    // 广告点击跳转地址，允许使用宏
+    optional string click_url = 1003;
+
+    //被下载的文件名, adct=2 时填充
+    optional string download_file_name = 1005;
+    //被下载 app 包名, adct=2 时填充
+    optional string download_pkgname = 1006;
+    //app 下载开始监控 URL 数组, adct=2 时填充
+    repeated string download_start_url = 1007;
+    //app 下载成功监控 URL 数组, adct=2 时填充
+    repeated string download_succ_url = 1008;
+    //app 安装开始监控 URL 数组, adct=2 时填充
+    repeated string inst_start_url = 1009;
+    //app 安装成功监控 URL 数组, adct=2 时填充
+    repeated string inst_succ_url = 1010;
+    //app 第一次被激活时监控 URL 数组, adct=2 时填充
+    repeated string active_url = 1011;
+
+    // 广告点击行为
+    optional Adct adct = 1012;
+
+}
+
+//素材mime类型
+extend com.mex.iadx.openrtb.NativeResponse.Asset.Image {
+    optional string mimes = 101;
+    optional string type = 102;
+}
+
+// 广告点击行为
+//0=未确认, 1=打开网页, 2=下载应用, 4=打开地图,  8=发送短信, 16=发送邮件, 32=拨打电话, 64=播放视频
+enum Adct {
+    UNDEFINED = 0;
+    OPEN_URL = 1;
+    DOWNLOAD_APP = 2;
+    OPEN_MAP = 3;
+    SEND_MESSAGE = 4;
+    SEND_MAIL = 5;
+    CALL_TEL = 6;
+    PLAY_VIDEO = 7;
+
+}
+
