@@ -1,5 +1,6 @@
 package com.david;
 
+import com.david.others.Person;
 import org.junit.Test;
 
 
@@ -19,7 +20,10 @@ public class TestStation {
     }
     @Test
     public void test2(){
-
+        int i = 0;
+        while (true){
+            System.out.println(i++);
+        }
     }
 
 
