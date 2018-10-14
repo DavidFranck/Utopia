@@ -184,6 +184,7 @@ public class LRUAlgorithm {
         public Object remove(K k) {
             CacheNode node = caches.get(k);
             if (node != null) {
+                //链表删除
                 if (node.pre != null) {
                     node.pre.next = node.next;
                 }
@@ -210,6 +211,7 @@ public class LRUAlgorithm {
             if (first == node) {
                 return;
             }
+            //把当前节点后面的 前索引 所引导 当前节点前面的
             if (node.next != null) {
                 node.next.pre = node.pre;
             }
