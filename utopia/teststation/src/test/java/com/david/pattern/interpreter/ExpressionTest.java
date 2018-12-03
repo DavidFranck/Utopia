@@ -1,4 +1,4 @@
-package com.david.interpreter;
+package com.david.pattern.interpreter;
 
 /**
  * 解释器模式

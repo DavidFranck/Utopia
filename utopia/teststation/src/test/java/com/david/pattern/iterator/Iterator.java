@@ -1,4 +1,4 @@
-package com.david.iterator;
+package com.david.pattern.iterator;
 
 public interface Iterator<T> {
     boolean hasNext();

@@ -1,4 +1,4 @@
-package com.david.interpreter;
+package com.david.pattern.interpreter;
 
 public class AndExpression implements Expression {
 

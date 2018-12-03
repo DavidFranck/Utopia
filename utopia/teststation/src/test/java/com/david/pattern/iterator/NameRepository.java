@@ -1,4 +1,4 @@
-package com.david.iterator;
+package com.david.pattern.iterator;
 
 public class NameRepository implements Container<String> {
 
