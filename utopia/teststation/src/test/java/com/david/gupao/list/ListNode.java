@@ -1,6 +1,19 @@
-package com.david.list;
+package com.david.gupao.list;
 
 public class ListNode {
+    //归并排序 先二分 在分别排序  在合并
+    public static ListNode sort(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode mid = mid(head);
+        ListNode right = mid.next;
+        mid.next = null;
+
+        ListNode listNode = merge1(sort(mid), sort(right));
+        return listNode;
+    }
+
     //合并两个有序链表从小到大 递归
     public static ListNode merge1(ListNode head1, ListNode head2) {
         if (head1 == null && head2 == null) {
@@ -30,7 +43,7 @@ public class ListNode {
         }
         ListNode head = head1.value < head2.value ? head1 : head2;//取小的放在head
         ListNode cur1 = head == head1 ? head1 : head2;//被合并链表 初始值为head
-        ListNode cur2 = head == head1 ? head2 : head2;//合并链表
+        ListNode cur2 = head == head1 ? head2 : head1;//合并链表
 
         ListNode pre = null;//curr1前一个
         ListNode next = null;//curr2后一个

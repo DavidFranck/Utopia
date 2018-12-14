@@ -1,9 +1,8 @@
-package com.david.list;
+package com.david.gupao.list;
 
 import org.junit.Test;
 
-import static com.david.list.ListNode.merge1;
-import static com.david.list.ListNode.merge2;
+import static com.david.gupao.list.ListNode.merge2;
 
 public class TestLinkedList {
 
@@ -17,15 +16,15 @@ public class TestLinkedList {
         ListNode listNode5 = new ListNode(5);
 
 
-//        listNode1.next = listNode2;
+        listNode1.next = listNode2;
 //        listNode2.next = listNode3;
-//        listNode5.next = listNode4;
+        listNode5.next = listNode4;
 
-        listNode1.next = listNode3;
+//        listNode1.next = listNode3;
         listNode2.next = listNode5;
-
-        ListNode head = listNode1;
-        ListNode head2 = listNode2;
+//
+//        ListNode head = listNode1;
+//        ListNode head2 = listNode2;
 
 
 //        ListNode.traverse(head);
@@ -34,7 +33,10 @@ public class TestLinkedList {
 //        System.out.println(ListNode.mid(head));
 
 
-        ListNode listNode = merge2(head, head2);
-        ListNode.traverse(listNode);
+//        ListNode listNode = merge2(head, head2);
+//        ListNode.traverse(listNode);
+
+        ListNode.sort(listNode1);
+        ListNode.traverse(listNode1);
     }
 }
