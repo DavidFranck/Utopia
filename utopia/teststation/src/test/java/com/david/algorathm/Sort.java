@@ -1,6 +1,7 @@
 package com.david.algorathm;
 
 import com.google.common.collect.ImmutableList;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,17 +21,38 @@ public class Sort {
         Arrays.stream(array).forEach(i -> System.out.print(i + " "));
     }
 
+    @After
+    public void after() {
+        Arrays.stream(array).forEach(i -> System.out.print(i + " "));
+    }
+
     @Test
     public void testQuickSort() {
         System.out.println("\n============快速排序====================");
-        Arrays.stream(quickSort(array)).forEach(i -> System.out.print(i + " "));
+        quickSort(array);
     }
 
     @Test
     public void testQuickSort2() {
-        quickSort2(array);
         System.out.println("\n============快速排序2====================");
-        Arrays.stream(quickSort(array)).forEach(i -> System.out.print(i + " "));
+        quickSort2(array);
+    }
+
+    @Test
+    public void testBubbleSort() {
+        System.out.println("\n============冒泡排序====================");
+        bubbleSort(array);
+    }
+
+    //两个相邻元素比较 把最大的冒泡到最后面 依次找出
+    public static void bubbleSort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                }
+            }
+        }
     }
 
     public static int[] quickSort2(int[] a) {
