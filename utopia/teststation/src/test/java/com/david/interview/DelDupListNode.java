@@ -24,10 +24,45 @@ public class DelDupListNode {
 
 
         ListNode.traverse(listNode1);
-        ListNode.traverse(deleteDuplication_1(listNode1));
-        ListNode.traverse(deleteDuplication_2(listNode1));
+//        ListNode.traverse(deleteDuplication_1(listNode1));
+//        ListNode.traverse(deleteDuplication_2(listNode1));
+        ListNode.traverse(deleteDuplication_3(listNode1));
 
     }
+
+    //方法三：循环实现:剑指offer解法
+    public static ListNode deleteDuplication_3(ListNode pHead) {
+        if (pHead == null || pHead.next == null)
+            return pHead;
+        ListNode pPreNode = null;//上一个节点
+        ListNode pNode = pHead;//当前节点
+        while (pNode != null) {
+            ListNode pNext = pNode.next;//下一个节点
+            boolean needDelete = false;//是否删除的标志
+            //当前节点与下一个节点值相同
+            if (pNext != null && pNext.value == pNode.value)
+                needDelete = true;
+            //不相同的时候 迭代一次
+            if (!needDelete) {
+                pPreNode = pNode;//更新上一个人节点
+                pNode = pNode.next;//迭代
+            } else {//相同的时候 迭代到不重复为止
+                int value = pNode.value;
+                ListNode pToBeDel = pNode;
+                while (pToBeDel != null && pToBeDel.value == value) {
+                    pNext = pToBeDel.next;
+                    pToBeDel = pNext;
+                }
+                if (pPreNode == null)
+                    pHead = pNext;
+                else
+                    pPreNode.next = pNext;
+                pNode = pNext;
+            }
+        }
+        return pHead;
+    }
+
 
     // 递归清空所有重复元素
     public static ListNode deleteDuplication_2(ListNode pHead) {
