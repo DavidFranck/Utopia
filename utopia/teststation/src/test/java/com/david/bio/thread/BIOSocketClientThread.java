@@ -11,8 +11,8 @@ import java.util.concurrent.Executors;
 
 public class BIOSocketClientThread {
 	public static void main(String[] args) throws Exception {
-		// 创建了一个socket
-		// 创建连接
+		// socket
+		//
 		ExecutorService threadPool = Executors.newFixedThreadPool(10);
 		threadPool.submit(new Runnable() {
 			@Override
@@ -22,14 +22,14 @@ public class BIOSocketClientThread {
 					try {
 						socket = new Socket();
 						socket.connect(new InetSocketAddress("192.168.0.75", 8888));
-						// 客户端写
+						//
 						PrintWriter pw = new PrintWriter(socket
 								.getOutputStream());
 						pw.print("Client " + Thread.currentThread().getName()
 								+ " is sending");
 						pw.flush();
 						socket.shutdownOutput();
-						// 客户端读
+						//
 						BufferedReader br = new BufferedReader(
 								new InputStreamReader(socket.getInputStream()));
 						StringBuilder sb = new StringBuilder();

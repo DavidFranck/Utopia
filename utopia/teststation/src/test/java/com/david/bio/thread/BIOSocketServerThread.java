@@ -14,18 +14,18 @@ import java.util.concurrent.Executors;
 public class BIOSocketServerThread {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
-		// 1 ´´½¨
+		// 1 åˆ›å»º
 		ServerSocket serverSocket = new ServerSocket();
-		// 2 °ó¶¨¶Ë¿Ú
+		// 2 ç»‘å®šç«¯å£
 		serverSocket.bind(new InetSocketAddress(8888));
 		ExecutorService threadPool = Executors.newFixedThreadPool(10);
 		while (true) {
-			// 3 »ñÈ¡ÇëÇó±¨ÎÄ
+			// 3 è·å–è¯·æ±‚æŠ¥æ–‡
 			final Socket socket = serverSocket.accept();
 			/*
-			 * ´´½¨Ïß³Ì ÕâÑù²»ºÃ ÒòÎª Ã¿´ÎÓĞ¿Í»§¶Ë·¢À´ÇëÇó¶¼Òª´´½¨Ò»¸öÏß³Ì 
-			 * µ«run ·½·¨ ÄÚµÄ IO ÓĞ¿ÉÄÜÒòÎª×èÈû²»ÄÜÔËĞĞ
-			 * °×°×´´½¨Ò»¸öÏß³Ì ¹ÒÆğ ÀË·ÑcpuºÍÄÚ´æ×ÊÔ´
+			 * åˆ›å»ºçº¿ç¨‹ è¿™æ ·ä¸å¥½ å› ä¸º æ¯æ¬¡æœ‰å®¢æˆ·ç«¯å‘æ¥è¯·æ±‚éƒ½è¦åˆ›å»ºä¸€ä¸ªçº¿ç¨‹
+			 * ä½†run æ–¹æ³• å†…çš„ IO æœ‰å¯èƒ½å› ä¸ºé˜»å¡ä¸èƒ½è¿è¡Œ
+			 * ç™½ç™½åˆ›å»ºä¸€ä¸ªçº¿ç¨‹ æŒ‚èµ· æµªè´¹cpuå’Œå†…å­˜èµ„æº
 			 */
 			// new Thread(){
 			// @Override
@@ -46,17 +46,17 @@ public class BIOSocketServerThread {
 					// e.printStackTrace();
 					// }
 					System.out.println("Server receive : " + /*sb.toString()
-							+ " in thread: "*/			
+							+ " in thread: "*/
 							" id:  "+ Thread.currentThread().getId() + "  name: "+ Thread.currentThread().getName());
 					try {
-						// ·şÎñ¶Ë¶Á
+						// æœåŠ¡ç«¯è¯»
 						BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"utf-8"));
 						String row;
 						StringBuilder sb = new StringBuilder();
 						while ((row = br.readLine()) != null) {
 							sb.append(row);
 						}
-						// ·şÎñ¶ËĞ´
+						// æœåŠ¡ç«¯å†™
 						PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"));
 						pw.print(" Server apend " + sb.toString());
 						pw.flush();
@@ -65,11 +65,11 @@ public class BIOSocketServerThread {
 					} catch (IOException e) {
 						e.printStackTrace();
 					} finally {
-						 try {
-						 socket.close();
-						 } catch (IOException e) {
-						 e.printStackTrace();
-						 }
+						try {
+							socket.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			});

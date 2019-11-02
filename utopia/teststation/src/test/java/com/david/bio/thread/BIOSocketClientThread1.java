@@ -12,17 +12,17 @@ public class BIOSocketClientThread1 {
 		for (int i = 0; i < 50; i++) {
 			Socket socket = null;
 			try {
-				// 创建了一个socket
+				// 鍒涘缓浜嗕竴涓猻ocket
 				socket = new Socket();
-				// 创建连接
+				// 鍒涘缓杩炴帴
 				socket.connect(new InetSocketAddress("192.168.0.75", 8888));
-				// 客户端写
+				// 瀹㈡埛绔啓
 				PrintWriter pw = new PrintWriter(socket.getOutputStream());
 				pw.print("Client " + i
 						+ " is sending");
 				pw.flush();
 				socket.shutdownOutput();
-				// 客户端读
+				// 瀹㈡埛绔
 				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 				StringBuilder sb = new StringBuilder();
 				String row = null;
