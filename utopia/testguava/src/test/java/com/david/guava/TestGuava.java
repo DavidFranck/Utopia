@@ -7,7 +7,6 @@ import com.google.common.hash.*;
 import com.google.common.io.*;
 import com.google.common.math.IntMath;
 import com.google.common.reflect.*;
-import com.sun.istack.internal.Nullable;
 import org.junit.Test;
 
 import java.io.*;
@@ -92,16 +91,16 @@ public class TestGuava {
     }
 
     /////////////////////////////////////////////////////////////////////////////////
-    @Test
-    public void testInvokable() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = this.getClass().getDeclaredMethod("add", new Class<?>[]{Integer.class, Integer.class});
-//        System.out.println(method.invoke(new TestGuava(),1,2));
-        Invokable<?, Object> invokable = Invokable.from(method);
-        System.out.println(invokable.getName());
-        System.out.println(invokable.getParameters());
-//        System.out.println();
-        System.out.println(invokable.getParameters().get(0).isAnnotationPresent(Nullable.class));
-    }
+//    @Test
+//    public void testInvokable() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+//        Method method = this.getClass().getDeclaredMethod("add", new Class<?>[]{Integer.class, Integer.class});
+////        System.out.println(method.invoke(new TestGuava(),1,2));
+//        Invokable<?, Object> invokable = Invokable.from(method);
+//        System.out.println(invokable.getName());
+//        System.out.println(invokable.getParameters());
+////        System.out.println();
+//        System.out.println(invokable.getParameters().get(0).isAnnotationPresent(Nullable.class));
+//    }
 
     @Test
     public void testAbstractinvocationHandler() {
