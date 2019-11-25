@@ -1,9 +1,9 @@
 package com.david.protobuf;
 
 
-import com.david.test.Container;
-import com.mex.iadx.openrtb.BidRequest;
-import org.junit.Test;
+//import com.david.test.Container;
+//import com.mex.iadx.openrtb.BidRequest;
+//import org.junit.Test;
 
 import java.util.UUID;
 
