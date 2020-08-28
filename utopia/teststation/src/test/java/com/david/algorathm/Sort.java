@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 /**
  * 排序
+ * https://time.geekbang.org/column/article/41802?utm_campaign=guanwang&utm_source=baidu-ad&utm_medium=ppzq-pc&utm_content=title&utm_term=baidu-ad-ppzq-title
  */
 public class Sort {
 
@@ -40,6 +41,39 @@ public class Sort {
     public void testBubbleSort() {
         System.out.println("\n============冒泡排序====================");
         bubbleSort(array);
+    }
+
+    @Test
+    public void testInsertSort() {
+        System.out.println("\n============冒泡排序====================");
+        insertionSort(array);
+    }
+
+    /*
+    插入排序
+    把数组分成已排序和未排序两部分
+    从未排序部分把元素插入到有序部分中
+     */
+    public static void insertionSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int value = array[i];//value为即将要比较的值
+            //寻找新元素已排序数据中插入位置 向前找到第一个比value小的元素停止
+            int j = i - 1;//j为有序队列下标
+            for (; j >= 0; j--) {
+                //value小的话交换
+                if (array[j] > value) {
+                    array[j + 1] = array[j];
+                } else {
+                    break;
+                }
+            }
+            array[j + 1] = value;
+        }
+    }
+
+    //选排序
+    public static void selectSort(int[] array) {
+
     }
 
     //两个相邻元素比较 把最大的冒泡到最后面 依次找出
