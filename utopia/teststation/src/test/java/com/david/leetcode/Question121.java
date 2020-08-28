@@ -21,7 +21,7 @@ public class Question121 {
     }
 
     /**
-     * TODO 通用动态规划
+     * TODO 通用动态规划 定时复习
      * https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/
      * i：天数
      * k：交易次数
@@ -78,6 +78,10 @@ public class Question121 {
             }
             return dp[n - 1][0];
         }
+        // 简化到如下
+        // ||
+        // ||
+        // V
         // k == 1
         int maxProfit_k_1(int[] prices) {
             int n = prices.length;

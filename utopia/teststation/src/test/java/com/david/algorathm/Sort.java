@@ -1,12 +1,10 @@
 package com.david.algorathm;
 
-import com.google.common.collect.ImmutableList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * 排序
@@ -46,12 +44,17 @@ public class Sort {
 
     //两个相邻元素比较 把最大的冒泡到最后面 依次找出
     public static void bubbleSort(int[] array) {
+        if (array == null || array.length < 2) return;
         for (int i = 0; i < array.length - 1; i++) {
+            //当遍历一次没有出现交换 已经有序了直接退出
+            boolean ordered = false;
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     swap(array, j, j + 1);
+                    ordered = true;
                 }
             }
+            if (!ordered) break;
         }
     }
 
