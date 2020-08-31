@@ -45,8 +45,14 @@ public class Sort {
 
     @Test
     public void testInsertSort() {
-        System.out.println("\n============冒泡排序====================");
+        System.out.println("\n============插入排序====================");
         insertionSort(array);
+    }
+
+    @Test
+    public void testSelectSort() {
+        System.out.println("\n============选择排序====================");
+        selectSort(array);
     }
 
     /*
@@ -73,15 +79,30 @@ public class Sort {
 
     //选排序
     public static void selectSort(int[] array) {
-
+        //排序长度次
+        for (int i = 0; i < array.length; i++) {
+            //取出最小的放在i的位置
+            int minIndex = i;
+            for (int j = i; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            //交换元素
+            int tmp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = tmp;
+        }
     }
 
     //两个相邻元素比较 把最大的冒泡到最后面 依次找出
     public static void bubbleSort(int[] array) {
         if (array == null || array.length < 2) return;
+        //外层循环冒泡轮数为"数组长度-1" 次
         for (int i = 0; i < array.length - 1; i++) {
             //当遍历一次没有出现交换 已经有序了直接退出
             boolean ordered = false;
+            //内层循环为每轮冒泡比较次数为"数组长度-1-i"总长度-冒泡好的元素个数
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     swap(array, j, j + 1);
